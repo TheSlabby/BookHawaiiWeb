@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="h-100 d-flex flex-column justify-content-center align-items-center p-5">
+
+    <h1>
+        Search for any city in Hawaii to see travel rates.
+    </h1>
+
+    <form class="d-flex input-group w-auto" action="/estimates/" method="post">
+        {% csrf_token %}
+        <input
+            type="search"
+            class="form-control rounded"
+            placeholder="Search for a city"
+            aria-label="Search"
+            aria-describedby="main_search"
+            id="city"
+            name="city"
+        />
+        <span class="input-group-text border-0" id="main_search">
+        <i class="fas fa-search"></i>
+        </span>
+    </form>
+</div>
+
+<div class="container">
+
+    <!--Section: Content-->
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card">
+          <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            <img src="https://cdn.pixabay.com/photo/2012/12/12/11/44/hawaii-69575_960_720.jpg" class="img-fluid" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">O'ahu "The Gathering Place"</h5>
+            <p class="card-text">
+              <a href="https://en.wikipedia.org/wiki/Oahu">O'ahu</a> is the third-largest of the Hawaiian
+              Islands. It is home to roughly one million people, over two-thirds of the population of the U.S. state
+              of Hawaii. The island of O’ahu and the Northwestern Hawaiian Islands constitute the City and County of
+              Honolulu. The state capital, Honolulu, is on Oʻahu's southeast coast. Popular destinations in O'ahu
+              include Waikiki Beach, Honolulu, and Diamond Head Volcano.
+            </p>
+            <a href="https://www.gohawaii.com/islands/oahu" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card">
+          <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            <img src="https://cdn.pixabay.com/photo/2022/12/03/15/00/maui-7632875_960_720.jpg" class="img-fluid" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Maui "The Valley Isle"</h5>
+            <p class="card-text">
+              <a href="https://en.wikipedia.org/wiki/Maui">Maui</a> is the second-largest of the islands of the state of Hawaii at 727.2 square miles, and the 17th-largest island in the United States. Maui's diverse landscapes are the result of a unique combination of geology, topography, and climate. The eastern flanks of Maui's volcanoes are cut by deeply incised valleys and steep-sided ravines that run downslope to the rocky, windswept shoreline.
+            </p>
+            <a href="https://www.gohawaii.com/islands/maui" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card">
+          <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            <img src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" class="img-fluid" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Moloka'i</h5>
+            <p class="card-text">
+ <a href="https://en.wikipedia.org/wiki/Molokai">Moloka'i</a> is the fifth most populated of the eight major islands that make up the Hawaiian Islands archipelago in the middle of the Pacific Ocean. It is 38 by 10 miles at its greatest length and width with a usable land area of 260 sq mi, making it the fifth-largest in size of the main Hawaiian Islands and the 27th largest island in the United States.
+The island's agrarian economy has been driven primarily by cattle ranching, pineapple production, sugarcane production and small-scale farming.
+            </p>
+            <a href="https://www.gohawaii.com/islands/molokai" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+    <!--Section: Content-->
+
+  </div>
+
+{% endblock %}

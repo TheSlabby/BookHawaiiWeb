@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="h-100 d-flex flex-column justify-content-center align-items-center p-5">
+    <div class="card text-center p-5 mt-2 bg-dark rounded-9" style="width: 80%; color: #ffffff">
+        <div class="card-body">
+            <h1 class="card-title">{{city.name}}, HI</h1>
+            <h5 class="card-body">Population: {{city.population}}</h5>
+        </div>
+
+        <div class="d-flex flex-row justify-content-center align-items-center">
+        {% for day in city.weather.forecast %}
+        <div class="card p-1 rounded-9" style="width: 19%; color: #000000">
+            <div class="card-body">
+                <p class="card-title">{{day.date}}</p>
+                <p class="card-text">
+                <b>{{day.info.mintemp_f}}° / {{day.info.maxtemp_f}}°</b>
+                <img src="{{day.info.condition.icon}}">
+                </p>
+            </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+    <div class="card text-center p-5 me-2 rounded-9 shadow-9" style="width: 80%">
+
+        {% if flights == False %}
+
+        <h1 class="card-title">Estimate Travel Costs</h1>
+        <form action="/estimates/{{city.name}}/" method="post">
+            {% csrf_token %}
+            <!-- Name input -->
+            <h5>Select a departure date</h5>
+            <input type="date" id="start" name="departure"
+                value="2023-02-11"
+                min="2023-02-11" max="2023-12-26">
+            <h5>Select a return date</h5>
+            <input type="date" id="start" name="arrival"
+                    value="2023-02-11"
+                    min="2023-02-11" max="2023-12-26">
+          
+            <!-- airport input -->
+            <div class="form-outline mb-4">
+              <input type="origin" name="origin" id="originID" class="form-control" />
+              <label class="form-label" name="origin" for="form5Example2">Origin Airport Code</label>
+            </div>
+
+
+            <!-- hotel price-->
+            <h3>Select a hotel budget</h3>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="hotelPrice" id="flexRadioDefault1" value="150"/>
+                <label class="form-check-label" for="price"> $150 / night </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="hotelPrice" id="flexRadioDefault2" value="250"/>
+                <label class="form-check-label" for="price"> $250 / night </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="hotelPrice" id="flexRadioDefault3" value="450"/>
+                <label class="form-check-label" for="price"> $450 / night </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="hotelPrice" id="flexRadioDefault4" value="950"/>
+                <label class="form-check-label" for="price"> $950 / night </label>
+              </div>
+
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Find Estimates</button>
+          </form>
+
+        {% elif flights == 'None' %}
+            <h2>No flights found :( </h2>
+        {% else %}
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <h1>Results</h1>
+            {% for flight in flights %}
+            <div class="card text-center p-5 me-2 rounded-9 shadow-9" style="width: 80%">
+                <h3>{{flight.legs.0.origin.name}} → {{flight.legs.0.destination.name}}</h3>
+                <h5><b>Flight Price:</b> ${{flight.price.amount}}</h5>
+                <h5><b>Estimated Hotel Price:</b> ${{hotelPrice}}</h5>
+                <p><b>Ticket ID: </b>{{flight.legs.0.id}}</p>
+                <div class="card-footer">
+                <h4><b>Final Estimate:</b> <span class="badge badge-primary">${{flight.price.amount|add:hotelPrice}}</span></h4>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+
+        
+
+    </div>
+</div>
+
+{% endblock %}

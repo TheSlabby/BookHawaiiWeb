@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block styles %}
+body {
+    background-image: url('https://www.pixeden.com/media/k2/galleries/93/004-subtle-light-pattern-background-texture.jpg');
+  }
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex flex-column justify-content-evenly align-items-top p-5">
+
+    <!--INFORMATION PANE-->
+    <div style="width: 100%">
+        <h1><center>Live Weather Information in Hawaii</center></h1>
+        <h5><center>Showing 15 cities with the greatest population in Hawaii.</center></h5>
+    </div>
+
+    <!--WEATHER CARDS-->
+    <div class="h-100 d-flex flex-column justify-content-center align-items-center p-5">
+
+
+        {% for city in cities %}
+
+
+        <div class="card text-center p-5 mt-2" style="width: 500px; height: 350px">
+            <div class="card-body">
+            <h2 class="card-title">{{city.name}}</h2>
+            <p class="card-text">
+                <b>Temperature</b>: {{city.weather.now.temp_f}}°
+                <img src="{{city.weather.now.condition.icon}}">
+            </p>
+            <a href="/estimates/{{city.name}}" class="btn btn-primary">View Estimates</a>
+            </div>
+            <div class="card-footer text-muted">Population: {{city.population}}</div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+{% endblock %}

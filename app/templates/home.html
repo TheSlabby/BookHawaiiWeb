@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+
+{% block styles %}
+/* Carousel styling */
+      #introCarousel,
+      .carousel-inner,
+      .carousel-item,
+      .carousel-item.active {
+        height: 100vh;
+      }
+
+      .carousel-item:nth-child(1) {
+        background-image: url('https://cdn.pixabay.com/photo/2015/10/07/03/31/hawaii-975623_960_720.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      .carousel-item:nth-child(2) {
+        background-image: url('https://cdn.pixabay.com/photo/2015/07/18/22/08/sunrise-850871_960_720.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      .carousel-item:nth-child(3) {
+        background-image: url('https://cdn.pixabay.com/photo/2017/06/11/00/52/molokaii-2391242_960_720.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      /* Height for devices larger than 576px */
+      @media (min-width: 992px) {
+        #introCarousel {
+          margin-top: -58.59px;
+        }
+      }
+
+{% endblock %}
+
+{% block content %}
+
+
+    <!-- Carousel wrapper -->
+    <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
+          <li data-mdb-target="#introCarousel" data-mdb-slide-to="1"></li>
+          <li data-mdb-target="#introCarousel" data-mdb-slide-to="2"></li>
+        </ol>
+  
+        <!-- Inner -->
+        <div class="carousel-inner">
+          <!-- Single item -->
+          <div class="carousel-item active">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+              <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white text-center">
+                  <h1 class="mb-3">Need a Break?</h1>
+                  <h5 class="mb-4">Escape to Hawaii</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Single item -->
+          <div class="carousel-item">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
+              <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white text-center">
+                  <h2>Plan your next tropical getaway with us!</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Single item -->
+          <div class="carousel-item">
+            <div class="mask" style="
+                  background: linear-gradient(
+                    45deg,
+                    rgba(29, 236, 197, 0.7),
+                    rgba(91, 14, 214, 0.7) 100%
+                  );
+                ">
+              <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white text-center">
+                  <h2>Book Hawaii Today!</h2>
+                  <a class="btn btn-outline-light btn-lg m-2"
+                    href="/estimates" target="_blank" role="button">Click
+                    Here for Estimates</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Inner -->
+  
+        <!-- Controls -->
+        <a class="carousel-control-prev" href="#introCarousel" role="button" data-mdb-slide="prev">
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#introCarousel" role="button" data-mdb-slide="next">
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <!-- Carousel wrapper -->
+    </header>
+    <!--Main Navigation-->
+  
+    <!--Main layout-->
+    <main class="mt-5">
+      <div class="container">
+        <!--Section: Content-->
+        <section>
+          <div class="row">
+            <div class="col-md-6 gx-5 mb-4">
+              <div class="bg-image hover-overlay ripple shadow-2-strong" data-mdb-ripple-color="light">
+                <img src="https://cdn.pixabay.com/photo/2019/11/16/16/56/diamond-head-4630604_960_720.jpg"
+                  class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+            </div>
+  
+            <div class="col-md-6 gx-5 mb-4">
+              <h4><strong>Hawaii "The Aloha State" </strong></h4>
+  
+              <p class="text-muted">
+                <a href="https://en.wikipedia.org/wiki/Hawaii">Hawaii</a> is a state in the Western United States,
+                about 2,000 miles from the U.S. mainland in the Pacific Ocean. It is the only U.S. state outside North
+                America, the only state that is an archipelago, and the only state in the tropics.
+              </p>
+              <p class="text-muted">
+                Hawaii comprises nearly the entire Hawaiian archipelago, 137 volcanic islands spanning 1,500 miles that
+                are physiographically and ethnologically part of the Polynesian subregion of Oceania. The state's ocean
+                coastline is consequently the fourth-longest in the U.S., at about 750 miles. The eight main islands, from
+                northwest to southeast, are Niʻihau, Kauaʻi, Oʻahu, Molokaʻi, Lānaʻi, Kahoʻolawe, Maui, and Hawaiʻi
+              </p>
+            </div>
+          </div>
+        </section>
+        <!--Section: Content-->
+  
+        <hr class="my-5" />
+  
+        <!--Section: Content-->
+        <div class="row">
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="https://cdn.britannica.com/44/91844-050-F248F634/beach-Waikiki-Honolulu-Oahu-Hawaii.jpg" class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title">Current Weather in Honolulu</h2>
+                <h4 class="card-text">
+                    <b>Temperature</b>: {{weather.temp_f}}°
+                    <img src="{{weather.condition.icon}}">
+                </h4>
+                
+                <a href="/estimates/Honolulu" class="btn btn-primary">View Honolulu Estimates</a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="https://mdbootstrap.com/img/new/standard/nature/023.jpg" class="img-fluid" />
+                <a href="/weather">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">View Weather in Hawaii</h5>
+                <a href="/weather" class="btn btn-primary">View Weather</a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" class="img-fluid" />
+                <a href="/estimates">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Find Estimates for Travel to Hawaii</h5>
+                <a href="/estimates" class="btn btn-primary">Estimates</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        </section>
+        <!--Section: Content-->
+  
+      </div>
+    </main>
+    <!--Main layout-->
+
+{% endblock %}
