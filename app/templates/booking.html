@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center">
+<div class="card rounded-9 p-5" style="width: 50%; height:500px;">
+    <h1><center><br>Contact Us</center></h1>
+    <form class="p-5" action="/booking/" method="post">
+        {% csrf_token %}
+        <!-- Name input -->
+        <div class="form-outline mb-4">
+        <input type="text" id="form5Example1" class="form-control" name="name"/>
+        <label class="form-label" for="form5Example1">Name</label>
+        </div>
+    
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+        <input type="email" id="form5Example2" class="form-control" name="email" />
+        <label class="form-label" for="form5Example2">Email address</label>
+        </div>
+        
+        <!-- Number input -->
+        <div class="form-outline mb-4">
+            <input type="number" id="form6Example6" class="form-control" name="phone"/>
+            <label class="form-label" for="form6Example6">Phone Number</label>
+        </div>
+    
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
+    </form>
+</div>
+</div>
+  {% endblock %}

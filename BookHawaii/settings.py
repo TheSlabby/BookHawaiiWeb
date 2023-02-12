@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-^12+8o8lko1jxff91@n62qx(h)slva&er*((xv*kq@@3%^r4fc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['bookhawaii.tech']
+ALLOWED_HOSTS = ['bookhawaii.tech', 'localhost']
 
 
 # Application definition

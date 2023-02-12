@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
 from utils import get_db_handle as GetDB
+from utils import send_text as Text
 import requests, datetime
 
 # Create your views here.
@@ -24,13 +25,19 @@ def estimatesHome(request):
         return render(request, 'estimatesHome.html')
 
 def estimates(request, city):
+    #init vars
     origin = False
     hotelPrice = 150
+    dif = 0
+
     if request.method == 'POST':
         origin = request.POST['origin'].upper()
         date = request.POST['departure']
         returnDate = request.POST['arrival']
-        hotelPrice = request.POST['hotelPrice']
+        if 'hotelPrice' in request.POST:
+            hotelPrice = request.POST['hotelPrice']
+        else:
+            hotelPrice = '0'
 
     db = GetDB()['hawaii']
     if db.cities.count_documents({'name' : city}) > 0:
@@ -56,12 +63,28 @@ def estimates(request, city):
             
             departureDate = datetime.datetime.strptime(date, "%Y-%m-%d")
             arrivalDate = datetime.datetime.strptime(returnDate, "%Y-%m-%d")
-            dif = arrivalDate - departureDate
-            hotelPrice = dif.days * int(hotelPrice)
+            dif = (arrivalDate - departureDate).days
+            hotelPrice = dif * int(hotelPrice)
 
 
-        return render(request, 'estimates.html', {'city' : city, 'flights' : flights, 'hotelPrice' : hotelPrice})
+        return render(request, 'estimates.html', {'city' : city, 'flights' : flights, 'hotelPrice' : hotelPrice, 'nights': dif})
     else:
         print('couldnt find city')
         return render(request, 'estimatesNotFound.html')
     
+def booking(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = '+1' + request.POST['phone']
+        print(name, email, phone)
+
+        # twilio integration
+        try:
+            Text(phone, 'Welcome to BookHawaii, ' + name + '\nEmail: ' + email + '\nTODO')
+            return render(request, 'bookingSuccess.html')
+        except:
+            return render(request, 'bookingFailure.html')
+    else:
+        return render(request, 'booking.html')
+        

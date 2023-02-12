@@ -33,12 +33,12 @@
             <!-- Name input -->
             <h5>Select a departure date</h5>
             <input type="date" id="start" name="departure"
-                value="2023-02-11"
-                min="2023-02-11" max="2023-12-26">
+                value="2023-02-12"
+                min="2023-02-12" max="2023-12-26">
             <h5>Select a return date</h5>
             <input type="date" id="start" name="arrival"
-                    value="2023-02-11"
-                    min="2023-02-11" max="2023-12-26">
+                    value="2023-02-12"
+                    min="2023-02-12" max="2023-12-26">
           
             <!-- airport input -->
             <div class="form-outline mb-4">
@@ -80,7 +80,8 @@
             <div class="card text-center p-5 me-2 rounded-9 shadow-9" style="width: 80%">
                 <h3>{{flight.legs.0.origin.name}} → {{flight.legs.0.destination.name}}</h3>
                 <h5><b>Flight Price:</b> ${{flight.price.amount}}</h5>
-                <h5><b>Estimated Hotel Price:</b> ${{hotelPrice}}</h5>
+                <h5><b>Estimated Hotel Cost:</b> ${{hotelPrice}}</h5>
+                <h5><b>Nights in Hawaii:</b> {{nights}}</h5>
                 <p><b>Ticket ID: </b>{{flight.legs.0.id}}</p>
                 <div class="card-footer">
                 <h4><b>Final Estimate:</b> <span class="badge badge-primary">${{flight.price.amount|add:hotelPrice}}</span></h4>

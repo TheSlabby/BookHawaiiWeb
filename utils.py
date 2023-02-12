@@ -6,14 +6,15 @@ def get_db_handle():
     return client
 
 
-def send_text(num):
+def send_text(num, body):
     account_sid = "AC9586ca6c4a1805ab6e432984b7c8647f"
     auth_token = "66974f604ef2934fe09d6c9b5c87f169"
     client = TwilioClient(account_sid, auth_token)
 
     message = client.messages.create(
-        body="Hello, world",
+        body=body,
         from_="+18339101888",
+        messaging_service_sid='MGb2e395bba74163ca9496fd15e0ecaa9d', 
         to=num
     )
 
