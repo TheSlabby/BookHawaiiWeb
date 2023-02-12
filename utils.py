@@ -1,25 +1,12 @@
 from pymongo import MongoClient
 from twilio.rest import Client as TwilioClient
 
+with open('.key','r') as f:
+    lines = f.readlines()
+    mongoURL = lines[1]
+    mongoUSER = lines[2]
+    mongoPASS = lines[3]
+
 def get_db_handle():
-    client = MongoClient('mongodb+srv://bookhawaii.eyhrv.mongodb.net/myFirstDatabase', username='Stair', password='4q0khheB27jVnY8m')
+    client = MongoClient(mongoURL, username=mongoUSER, password=mongoPASS)
     return client
-
-
-def send_text(num, body):
-    account_sid = "AC9586ca6c4a1805ab6e432984b7c8647f"
-    auth_token = "66974f604ef2934fe09d6c9b5c87f169"
-    client = TwilioClient(account_sid, auth_token)
-
-    message = client.messages.create(
-        body=body,
-        from_="+18339101888",
-        messaging_service_sid='MGb2e395bba74163ca9496fd15e0ecaa9d', 
-        to=num
-    )
-
-    print(message.sid)
-
-if __name__ == '__main__':
-    print('running')
-    send_text('2566822445')

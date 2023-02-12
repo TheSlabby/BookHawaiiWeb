@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
 from utils import get_db_handle as GetDB
-from utils import send_text as Text
+# from utils import send_text as Text
 import requests, datetime
 
 # Create your views here.
@@ -80,11 +80,12 @@ def booking(request):
         print(name, email, phone)
 
         # twilio integration
-        try:
-            Text(phone, 'Welcome to BookHawaii, ' + name + '\nEmail: ' + email + '\nTODO')
-            return render(request, 'bookingSuccess.html')
-        except:
-            return render(request, 'bookingFailure.html')
+        # try:
+        #     Text(phone, 'Welcome to BookHawaii, ' + name + '\nEmail: ' + email + '\nTODO')
+        #     return render(request, 'bookingSuccess.html')
+        # except:
+        #     return render(request, 'bookingFailure.html')
+        return render(request, 'bookingSuccess.html')
     else:
         return render(request, 'booking.html')
         

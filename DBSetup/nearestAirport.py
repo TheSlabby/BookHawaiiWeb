@@ -1,7 +1,12 @@
 import requests
 from pymongo import MongoClient
 
-client = MongoClient('mongodb+srv://bookhawaii.eyhrv.mongodb.net/myFirstDatabase', username='Stair', password='4q0khheB27jVnY8m')
+with open('.key','r') as f:
+    lines = f.readlines()
+    mongoURL = lines[1]
+    mongoUSER = lines[2]
+    mongoPASS = lines[3]
+client = MongoClient(mongoURL, username=mongoUSER, password=mongoPASS)
 db = client['hawaii']
 
 URL = 'https://www.travelmath.com/nearest-airport/'
