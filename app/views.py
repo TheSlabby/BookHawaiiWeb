@@ -51,7 +51,7 @@ def estimates(request, city):
             print('Getting flights...')
             querystring = {"origin":origin,"destination":dest,"date":date,'returnDate':returnDate,"currency":"USD","countryCode":"US","market":"en-US"}
             headers = {
-                "X-RapidAPI-Key": "7dc7750061msh5bc05e27aa96c7cp1f0e35jsnb78e0720cfd2",
+                "X-RapidAPI-Key": open('.key','r').readlines()[4].strip(),
                 "X-RapidAPI-Host": "skyscanner50.p.rapidapi.com"
             }
             response = requests.get("https://skyscanner50.p.rapidapi.com/api/v1/searchFlights", headers=headers, params=querystring)
