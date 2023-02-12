@@ -3,9 +3,9 @@ from pymongo import MongoClient
 
 with open('.key','r') as f:
     lines = f.readlines()
-    mongoURL = lines[1]
-    mongoUSER = lines[2]
-    mongoPASS = lines[3]
+    mongoURL = lines[1].strip()
+    mongoUSER = lines[2].strip()
+    mongoPASS = lines[3].strip()
 client = MongoClient(mongoURL, username=mongoUSER, password=mongoPASS)
 db = client['hawaii']
 
